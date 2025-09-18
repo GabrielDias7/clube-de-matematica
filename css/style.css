@@ -1,0 +1,726 @@
+/* Definições de Variáveis Globais */
+:root {
+    --primary-color: #FF8C00; /* Laranja mais vibrante */
+    --secondary-color: #4a4a4a;
+    --background-color: #121212;
+    --surface-color: #1e1e1e;
+    --text-color: #e0e0e0;
+    --font-heading: 'Montserrat', sans-serif;
+    --font-main: 'Poppins', sans-serif;
+}
+
+body.light-mode {
+    --background-color: #f0f0f0;
+    --surface-color: #ffffff;
+    --text-color: #333333;
+    --secondary-color: #dddddd;
+}
+
+/* Reset Básico e Estilos Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    overflow-x: hidden; /* Previne scroll horizontal */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    letter-spacing: 0.5px; /* Deixa a fonte do corpo um pouco mais larga */
+    font-weight: 600; /* Aumenta a espessura da fonte do corpo */
+}
+
+h1 {
+    color: var(--primary-color);
+    font-family: var(--font-heading);
+    letter-spacing: 1px; /* Deixa os títulos um pouco mais largos */
+    font-weight: 900; /* Aumenta a espessura dos títulos */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+h2, h3 {
+    color: var(--primary-color);
+    font-family: var(--font-heading);
+    letter-spacing: 1px; /* Deixa os títulos um pouco mais largos */
+    font-weight: 900; /* Aumenta a espessura dos títulos */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Fundo de Partículas com Canvas */
+#particle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Garante que o canvas fique no fundo */
+}
+
+/* Estilos do Header e Navegação */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background: rgba(30, 30, 30, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 1rem 5%;
+    transition: background 0.3s ease;
+}
+
+body.light-mode header {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    height: 40px;
+}
+
+.logo-name {
+    height: 25px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600; /* Aumenta a espessura dos links de navegação */
+    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.join-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700; /* Mantém a espessura do botão */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.join-btn:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 0 15px var(--primary-color);
+}
+
+.hero-btn {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    }
+
+.hero-btn:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+#theme-toggle {
+    background: var(--surface-color);
+    border: 1px solid var(--secondary-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    transition: background-color 0.3s ease;
+}
+
+#theme-toggle .icon {
+    stroke: var(--primary-color);
+}
+
+#theme-toggle .icon-sun {
+    display: none; /* Oculto por padrão no modo escuro */
+}
+
+#theme-toggle .icon-moon {
+    display: block;
+}
+
+body.light-mode #theme-toggle .icon-sun {
+    display: block;
+}
+
+body.light-mode #theme-toggle .icon-moon {
+    display: none;
+}
+
+
+/* Seção Hero */
+#hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    overflow: hidden; /* Previne que qualquer conteúdo vaze para fora */
+}
+
+.hero-content {
+    position: relative; /* Garante que o conteúdo de texto fique no fluxo normal do flexbox */
+    z-index: 1; /* Coloca o conteúdo na frente do canvas de fundo */
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* Estilos Gerais para Seções */
+section:not(#hero) {
+    padding: 6rem 5%;
+    border-bottom: 1px solid var(--surface-color);
+}
+
+section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+#about-container .banner-section p {
+    text-align: justify;
+}
+
+/* Preloader Styles */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+#preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; /* Prevents interaction with hidden preloader */
+}
+
+.preloader-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#loading-bar-container {
+    width: 200px;
+    height: 10px;
+    background-color: var(--surface-color);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#loading-bar {
+    width: 0%;
+    height: 100%;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    transition: width 0.3s ease;
+}
+
+/* Hide main content initially */
+body.hidden > *:not(#preloader) {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.hidden-content {
+    opacity: 0;
+    visibility: hidden;
+    height: 0; /* To prevent it from taking up space */
+    overflow: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease, height 0.5s ease;
+}
+
+/* Estilos para a Seção de Banners */
+#banners-container {
+    padding-top: 80px; /* Espaço para a navbar fixa */
+}
+
+.banner-section {
+    padding: 4rem 5%;
+    text-align: center;
+    border-bottom: 1px solid var(--surface-color);
+}
+
+.banner-section h2 {
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+.banner-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+.banner-media-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.resource-media-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+/* Estilos para a Seção de Links Úteis */
+#links-container {
+    padding-top: 80px; /* Espaço para a navbar fixa */
+    display: block; /* Changed to block to stack links vertically */
+    /* Removed flex-wrap, justify-content, and gap as they are not needed with display: block */
+}
+
+.link-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 350px; /* Adjust as needed */
+    margin: 1rem auto; /* Center items and add vertical spacing */
+}
+
+.link-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.useful-link {
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    text-align: center; /* Center the text within the button */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.useful-link:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 0 15px var(--primary-color);
+}
+
+.view-pdf-btn {
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.view-pdf-btn:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 0 15px var(--primary-color);
+}
+
+.media-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+}
+
+.media-item .banner-image,
+.media-item iframe {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.download-btn {
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.download-btn:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 0 15px var(--primary-color);
+}
+
+/* Responsive iframe for PDFs */
+.media-item iframe {
+    width: 100%;
+    height: 400px; /* A default height, but we'll make it responsive */
+    max-height: 75vh; /* Max height relative to viewport height */
+    border-radius: 8px;
+    display: block; /* Ensure it behaves as a block element */
+}
+
+/* Estilização da Barra de Rolagem */
+
+/* Para Firefox (limitado) */
+html {
+    scrollbar-width: none; /* Remove a barra de rolagem no Firefox */
+    scrollbar-color: transparent transparent; /* Garante que não haja cor residual */
+}
+
+/* Para Webkit (Chrome, Safari, Edge) */
+body::-webkit-scrollbar {
+    width: 0px; /* Remove a barra de rolagem no Webkit */
+    background: transparent; /* Garante que não haja fundo */
+}
+
+body::-webkit-scrollbar-track {
+    background: transparent; /* Sem fundo */
+    box-shadow: none; /* Sem sombra */
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Torna o thumb transparente */
+    border-radius: 0px; /* Sem cantos arredondados */
+}
+
+body::-webkit-scrollbar-button {
+    display: none !important; /* Remove as setas */
+    width: 0 !important;
+    height: 0 !important;
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+body::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+/* Estilos para a navegação de seções */
+/* Estilos para a navegação de seções */
+/* Estilos para a navegação de seções */
+#section-nav {
+    position: fixed;
+    top: 90px; /* Ajustado para ficar abaixo do header */
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 0; /* Sem padding no container */
+    background: transparent; /* Sem fundo no container */
+    backdrop-filter: none; /* Sem blur no container */
+    z-index: 90; /* Abaixo do header principal, acima do conteúdo */
+    box-shadow: none; /* Sem sombra no container */
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#section-nav .hero-btn {
+    border: none; /* Sem borda no estado normal */
+    color: var(--text-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+    
+    /* Efeito acrílico nos botões */
+    background: rgba(30, 30, 30, 0.5); /* Fundo semi-transparente */
+    backdrop-filter: blur(10px); /* Efeito blur */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Sombra para destacar */
+}
+
+#section-nav .hero-btn.active,
+#section-nav .hero-btn:hover {
+    background-color: var(--primary-color); /* Cor primária ao ativar/hover */
+    color: #fff;
+    border: 2px solid var(--primary-color); /* Borda laranja ao ativar/hover */
+    backdrop-filter: none; /* Remove blur no hover/active para clareza */
+}
+
+body.light-mode #section-nav {
+    background: transparent;
+    box-shadow: none;
+}
+
+body.light-mode #section-nav .hero-btn {
+    border: none; /* Sem borda no estado normal */
+    color: var(--text-color);
+    /* Efeito acrílico nos botões para light mode */
+    background: rgba(255, 255, 255, 0.5); /* Fundo semi-transparente */
+    backdrop-filter: blur(10px); /* Efeito blur */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
+}
+
+body.light-mode #section-nav .hero-btn.active,
+body.light-mode #section-nav .hero-btn:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: 2px solid var(--primary-color); /* Borda laranja ao ativar/hover */
+    backdrop-filter: none; /* Remove blur no hover/active para clareza */
+}
+
+/* Media Queries for Responsiveness */
+
+@media (max-width: 768px) {
+    /* Header and Navigation */
+    header {
+        padding: 0.8rem 3%;
+    }
+
+    .logo-icon {
+        height: 35px;
+    }
+
+    .logo-name {
+        height: 20px;
+    }
+
+    .join-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    /* Hero Section */
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .hero-btn {
+        width: 80%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    /* General Sections */
+    section:not(#hero) {
+        padding: 4rem 3%;
+    }
+
+    section h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    /* Banners and Media Items */
+    .banner-media-container,
+    .resource-media-container,
+    #links-container {
+        gap: 1.5rem;
+    }
+
+    .link-item,
+    .media-item {
+        max-width: 90%; /* Allow items to take more width on smaller screens */
+        padding: 1rem;
+    }
+
+    .media-item iframe {
+        height: 300px; /* Adjust height for mobile */
+        max-height: 60vh;
+    }
+
+    /* Section Navigation */
+    #section-nav {
+        top: 70px; /* Adjust to be below the smaller header */
+        gap: 10px;
+        flex-wrap: wrap; /* Allow buttons to wrap */
+        padding: 0.5rem 3%;
+    }
+
+    #section-nav .hero-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Header and Navigation */
+    header {
+        padding: 0.6rem 2%;
+    }
+
+    .logo-icon {
+        height: 30px;
+    }
+
+    .logo-name {
+        height: 18px;
+    }
+
+    .nav-buttons {
+        gap: 0.5rem;
+    }
+
+    .join-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    #theme-toggle {
+        width: 35px;
+        height: 35px;
+    }
+
+    /* Hero Section */
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+
+    .hero-buttons {
+        gap: 10px;
+    }
+
+    .hero-btn {
+        width: 95%;
+        max-width: none; /* Remove max-width for full width on very small screens */
+    }
+
+    /* General Sections */
+    section:not(#hero) {
+        padding: 3rem 2%;
+    }
+
+    section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Banners and Media Items */
+    .banner-media-container,
+    .resource-media-container,
+    #links-container {
+        gap: 1rem;
+    }
+
+    .link-item,
+    .media-item {
+        max-width: 100%; /* Full width on very small screens */
+        padding: 0.8rem;
+    }
+
+    .media-item iframe {
+        height: 250px;
+        max-height: 50vh;
+    }
+
+    /* Section Navigation */
+    #section-nav {
+        top: 60px; /* Adjust for even smaller header */
+        gap: 5px;
+        padding: 0.3rem 2%;
+    }
+
+    #section-nav .hero-btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+    }
+}
+
+

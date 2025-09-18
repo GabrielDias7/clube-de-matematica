@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clube de Matemática</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="hidden">
+
+    <div id="preloader">
+        <div class="preloader-logo">
+            <img src="assets/images/logoicon.png" alt="Ícone do Clube" class="logo-icon">
+            <img src="assets/images/logoname.png" alt="Nome do Clube" class="logo-name">
+        </div>
+        <div id="loading-bar-container">
+            <div id="loading-bar"></div>
+        </div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="#hero" id="header-logo-link">
+                    <img src="assets/images/logoicon.png" alt="Ícone do Clube" class="logo-icon">
+                    <img src="assets/images/logoname.png" alt="Nome do Clube" class="logo-name">
+                </a>
+            </div>
+            <ul>
+                <!-- Links removidos -->
+            </ul>
+            <div class="nav-buttons">
+                <button class="join-btn">Sobre</button>
+                <button id="theme-toggle" title="Mudar tema">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-sun"><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path><circle cx="12" cy="12" r="5"></circle></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <div id="section-nav" class="hidden-content">
+        <button id="section-banners-btn" class="hero-btn">Banners</button>
+        <button id="section-resources-btn" class="hero-btn">Recursos</button>
+        <button id="section-links-btn" class="hero-btn">Links Úteis</button>
+    </div>
+
+    <main>
+        <section id="hero">
+            <canvas id="particle-canvas"></canvas>
+            <div class="hero-content">
+                <h1>Recursos para sua jornada escolar</h1>
+                <p>Site feito para facilitar acesso a Banners informativos e materiais úteis</p>
+                <div class="hero-buttons">
+                    <button class="hero-btn" id="view-banners-btn">Ver Banners</button>
+                    <button class="hero-btn" id="view-resources-btn">Recursos</button>
+                    <button class="hero-btn" id="view-links-btn">Links Úteis</button>
+                </div>
+            </div>
+        </section>
+
+        <div id="banners-container" class="hidden-content">
+            <!-- Banners will be loaded here dynamically -->
+        </div>
+
+        <div id="resources-container" class="hidden-content">
+            <section class="banner-section">
+                <h2>Recursos</h2>
+                <p>Conteúdo da seção de Recursos.</p>
+            </section>
+        </div>
+
+        <div id="links-container" class="hidden-content">
+            <section class="banner-section">
+                <h2>Links Úteis</h2>
+                <p>Conteúdo da seção de Links Úteis.</p>
+            </section>
+        </div>
+
+        <div id="about-container" class="hidden-content">
+            <section class="banner-section">
+                <h2>Sobre o Clube de Matemática</h2>
+                <p>Este site é uma iniciativa do Clube de Matemática das turmas T2A e T2B. Nosso principal objetivo é auxiliar os estudantes, oferecendo acesso facilitado a banners informativos e materiais úteis para a jornada escolar.</p>
+            </section>
+        </div>
+    </main>
+
+    <!-- Bibliotecas de Animação -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
+
+    <!-- Script Principal -->
+    <script src="js/main.js" defer></script>
+</body>
+</html>
