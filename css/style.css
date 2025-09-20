@@ -1,6 +1,5 @@
-/* Definições de Variáveis Globais */
 :root {
-    --primary-color: #FF8C00; /* Laranja mais vibrante */
+    --primary-color: #FF8C00; 
     --secondary-color: #4a4a4a;
     --background-color: #121212;
     --surface-color: #1e1e1e;
@@ -16,7 +15,6 @@ body.light-mode {
     --secondary-color: #dddddd;
 }
 
-/* Reset Básico e Estilos Globais */
 * {
     margin: 0;
     padding: 0;
@@ -31,39 +29,37 @@ body {
     font-family: var(--font-main);
     background-color: var(--background-color);
     color: var(--text-color);
-    overflow-x: hidden; /* Previne scroll horizontal */
+    overflow-x: hidden; 
     transition: background-color 0.3s ease, color 0.3s ease;
-    letter-spacing: 0.5px; /* Deixa a fonte do corpo um pouco mais larga */
-    font-weight: 600; /* Aumenta a espessura da fonte do corpo */
+    letter-spacing: 0.5px; 
+    font-weight: 600; 
 }
 
 h1 {
     color: var(--primary-color);
     font-family: var(--font-heading);
-    letter-spacing: 1px; /* Deixa os títulos um pouco mais largos */
-    font-weight: 900; /* Aumenta a espessura dos títulos */
+    letter-spacing: 1px; 
+    font-weight: 900; 
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 h2, h3 {
     color: var(--primary-color);
     font-family: var(--font-heading);
-    letter-spacing: 1px; /* Deixa os títulos um pouco mais largos */
-    font-weight: 900; /* Aumenta a espessura dos títulos */
+    letter-spacing: 1px; 
+    font-weight: 900; 
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* Fundo de Partículas com Canvas */
 #particle-canvas {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Garante que o canvas fique no fundo */
+    z-index: -1; 
 }
 
-/* Estilos do Header e Navegação */
 header {
     position: fixed;
     width: 100%;
@@ -109,7 +105,7 @@ nav ul {
 nav a {
     text-decoration: none;
     color: var(--text-color);
-    font-weight: 600; /* Aumenta a espessura dos links de navegação */
+    font-weight: 600; 
     transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
 }
 
@@ -132,7 +128,7 @@ nav a:hover {
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    font-weight: 700; /* Mantém a espessura do botão */
+    font-weight: 700; 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -178,7 +174,7 @@ nav a:hover {
 }
 
 #theme-toggle .icon-sun {
-    display: none; /* Oculto por padrão no modo escuro */
+    display: none; 
 }
 
 #theme-toggle .icon-moon {
@@ -194,7 +190,6 @@ body.light-mode #theme-toggle .icon-moon {
 }
 
 
-/* Seção Hero */
 #hero {
     height: 100vh;
     display: flex;
@@ -202,12 +197,12 @@ body.light-mode #theme-toggle .icon-moon {
     justify-content: center;
     position: relative;
     text-align: center;
-    overflow: hidden; /* Previne que qualquer conteúdo vaze para fora */
+    overflow: hidden; 
 }
 
 .hero-content {
-    position: relative; /* Garante que o conteúdo de texto fique no fluxo normal do flexbox */
-    z-index: 1; /* Coloca o conteúdo na frente do canvas de fundo */
+    position: relative; 
+    z-index: 1; 
     max-width: 800px;
 }
 
@@ -228,7 +223,6 @@ body.light-mode #theme-toggle .icon-moon {
     margin-top: 30px;
 }
 
-/* Estilos Gerais para Seções */
 section:not(#hero) {
     padding: 6rem 5%;
     border-bottom: 1px solid var(--surface-color);
@@ -244,7 +238,6 @@ section h2 {
     text-align: justify;
 }
 
-/* Preloader Styles */
 #preloader {
     position: fixed;
     top: 0;
@@ -263,7 +256,7 @@ section h2 {
 #preloader.hidden {
     opacity: 0;
     visibility: hidden;
-    pointer-events: none; /* Prevents interaction with hidden preloader */
+    pointer-events: none; 
 }
 
 .preloader-logo {
@@ -289,7 +282,6 @@ section h2 {
     transition: width 0.3s ease;
 }
 
-/* Hide main content initially */
 body.hidden > *:not(#preloader) {
     opacity: 0;
     visibility: hidden;
@@ -298,14 +290,13 @@ body.hidden > *:not(#preloader) {
 .hidden-content {
     opacity: 0;
     visibility: hidden;
-    height: 0; /* To prevent it from taking up space */
+    height: 0; 
     overflow: hidden;
     transition: opacity 0.5s ease, visibility 0.5s ease, height 0.5s ease;
 }
 
-/* Estilos para a Seção de Banners */
 #banners-container {
-    padding-top: 80px; /* Espaço para a navbar fixa */
+    padding-top: 80px; 
 }
 
 .banner-section {
@@ -342,11 +333,10 @@ body.hidden > *:not(#preloader) {
     gap: 2rem;
 }
 
-/* Estilos para a Seção de Links Úteis */
 #links-container {
-    padding-top: 80px; /* Espaço para a navbar fixa */
-    display: block; /* Changed to block to stack links vertically */
-    /* Removed flex-wrap, justify-content, and gap as they are not needed with display: block */
+    padding-top: 80px; 
+    display: block; 
+    
 }
 
 .link-item {
@@ -359,8 +349,8 @@ body.hidden > *:not(#preloader) {
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     width: 100%;
-    max-width: 350px; /* Adjust as needed */
-    margin: 1rem auto; /* Center items and add vertical spacing */
+    max-width: 350px; 
+    margin: 1rem auto; 
 }
 
 .link-image {
@@ -379,7 +369,7 @@ body.hidden > *:not(#preloader) {
     border-radius: 50px;
     cursor: pointer;
     font-weight: 700;
-    text-align: center; /* Center the text within the button */
+    text-align: center; 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -443,41 +433,37 @@ body.hidden > *:not(#preloader) {
     box-shadow: 0 0 15px var(--primary-color);
 }
 
-/* Responsive iframe for PDFs */
 .media-item iframe {
     width: 100%;
-    height: 400px; /* A default height, but we'll make it responsive */
-    max-height: 75vh; /* Max height relative to viewport height */
+    height: 400px; 
+    max-height: 75vh; 
     border-radius: 8px;
-    display: block; /* Ensure it behaves as a block element */
+    display: block; 
 }
 
-/* Estilização da Barra de Rolagem */
 
-/* Para Firefox (limitado) */
 html {
-    scrollbar-width: none; /* Remove a barra de rolagem no Firefox */
-    scrollbar-color: transparent transparent; /* Garante que não haja cor residual */
+    scrollbar-width: none; 
+    scrollbar-color: transparent transparent; 
 }
 
-/* Para Webkit (Chrome, Safari, Edge) */
 body::-webkit-scrollbar {
-    width: 0px; /* Remove a barra de rolagem no Webkit */
-    background: transparent; /* Garante que não haja fundo */
+    width: 0px; 
+    background: transparent; 
 }
 
 body::-webkit-scrollbar-track {
-    background: transparent; /* Sem fundo */
-    box-shadow: none; /* Sem sombra */
+    background: transparent; 
+    box-shadow: none; 
 }
 
 body::-webkit-scrollbar-thumb {
-    background-color: transparent; /* Torna o thumb transparente */
-    border-radius: 0px; /* Sem cantos arredondados */
+    background-color: transparent; 
+    border-radius: 0px; 
 }
 
 body::-webkit-scrollbar-button {
-    display: none !important; /* Remove as setas */
+    display: none !important; 
     width: 0 !important;
     height: 0 !important;
     background-color: transparent !important;
@@ -488,28 +474,26 @@ body::-webkit-scrollbar-corner {
     background: transparent;
 }
 
-/* Estilos para a navegação de seções */
-/* Estilos para a navegação de seções */
-/* Estilos para a navegação de seções */
+
 #section-nav {
     position: fixed;
-    top: 90px; /* Ajustado para ficar abaixo do header */
+    top: 90px; 
     left: 0;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
-    padding: 0; /* Sem padding no container */
-    background: transparent; /* Sem fundo no container */
-    backdrop-filter: none; /* Sem blur no container */
-    z-index: 90; /* Abaixo do header principal, acima do conteúdo */
-    box-shadow: none; /* Sem sombra no container */
+    padding: 0; 
+    background: transparent; 
+    backdrop-filter: none; 
+    z-index: 90; 
+    box-shadow: none; 
     transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
 #section-nav .hero-btn {
-    border: none; /* Sem borda no estado normal */
+    border: none; 
     color: var(--text-color);
     padding: 0.75rem 1.5rem;
     border-radius: 50px;
@@ -517,18 +501,18 @@ body::-webkit-scrollbar-corner {
     font-weight: 700;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
     
-    /* Efeito acrílico nos botões */
-    background: rgba(30, 30, 30, 0.5); /* Fundo semi-transparente */
-    backdrop-filter: blur(10px); /* Efeito blur */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Sombra para destacar */
+    
+    background: rgba(30, 30, 30, 0.5); 
+    backdrop-filter: blur(10px); 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); 
 }
 
 #section-nav .hero-btn.active,
 #section-nav .hero-btn:hover {
-    background-color: var(--primary-color); /* Cor primária ao ativar/hover */
+    background-color: var(--primary-color); 
     color: #fff;
-    border: 2px solid var(--primary-color); /* Borda laranja ao ativar/hover */
-    backdrop-filter: none; /* Remove blur no hover/active para clareza */
+    border: 2px solid var(--primary-color); 
+    backdrop-filter: none; 
 }
 
 body.light-mode #section-nav {
@@ -537,26 +521,32 @@ body.light-mode #section-nav {
 }
 
 body.light-mode #section-nav .hero-btn {
-    border: none; /* Sem borda no estado normal */
+    border: none; 
     color: var(--text-color);
-    /* Efeito acrílico nos botões para light mode */
-    background: rgba(255, 255, 255, 0.5); /* Fundo semi-transparente */
-    backdrop-filter: blur(10px); /* Efeito blur */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
+    
+    background: rgba(255, 255, 255, 0.5); 
+    backdrop-filter: blur(10px); 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
 }
 
 body.light-mode #section-nav .hero-btn.active,
 body.light-mode #section-nav .hero-btn:hover {
     background-color: var(--primary-color);
     color: #fff;
-    border: 2px solid var(--primary-color); /* Borda laranja ao ativar/hover */
-    backdrop-filter: none; /* Remove blur no hover/active para clareza */
+    border: 2px solid var(--primary-color); 
+    backdrop-filter: none; 
 }
 
-/* Media Queries for Responsiveness */
+
+.youtube-video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+}
+
 
 @media (max-width: 768px) {
-    /* Header and Navigation */
+    
     header {
         padding: 0.8rem 3%;
     }
@@ -574,7 +564,7 @@ body.light-mode #section-nav .hero-btn:hover {
         font-size: 0.9rem;
     }
 
-    /* Hero Section */
+    
     .hero-content h1 {
         font-size: 3rem;
     }
@@ -594,7 +584,7 @@ body.light-mode #section-nav .hero-btn:hover {
         margin: 0 auto;
     }
 
-    /* General Sections */
+    
     section:not(#hero) {
         padding: 4rem 3%;
     }
@@ -604,7 +594,7 @@ body.light-mode #section-nav .hero-btn:hover {
         margin-bottom: 2rem;
     }
 
-    /* Banners and Media Items */
+    
     .banner-media-container,
     .resource-media-container,
     #links-container {
@@ -613,20 +603,20 @@ body.light-mode #section-nav .hero-btn:hover {
 
     .link-item,
     .media-item {
-        max-width: 90%; /* Allow items to take more width on smaller screens */
+        max-width: 90%; 
         padding: 1rem;
     }
 
     .media-item iframe {
-        height: 300px; /* Adjust height for mobile */
+        height: 300px; 
         max-height: 60vh;
     }
 
-    /* Section Navigation */
+    
     #section-nav {
-        top: 70px; /* Adjust to be below the smaller header */
+        top: 70px; 
         gap: 10px;
-        flex-wrap: wrap; /* Allow buttons to wrap */
+        flex-wrap: wrap; 
         padding: 0.5rem 3%;
     }
 
@@ -637,7 +627,7 @@ body.light-mode #section-nav .hero-btn:hover {
 }
 
 @media (max-width: 480px) {
-    /* Header and Navigation */
+    
     header {
         padding: 0.6rem 2%;
     }
@@ -664,7 +654,7 @@ body.light-mode #section-nav .hero-btn:hover {
         height: 35px;
     }
 
-    /* Hero Section */
+    
     .hero-content h1 {
         font-size: 2.2rem;
     }
@@ -679,10 +669,10 @@ body.light-mode #section-nav .hero-btn:hover {
 
     .hero-btn {
         width: 95%;
-        max-width: none; /* Remove max-width for full width on very small screens */
+        max-width: none; 
     }
 
-    /* General Sections */
+    
     section:not(#hero) {
         padding: 3rem 2%;
     }
@@ -692,7 +682,7 @@ body.light-mode #section-nav .hero-btn:hover {
         margin-bottom: 1.5rem;
     }
 
-    /* Banners and Media Items */
+    
     .banner-media-container,
     .resource-media-container,
     #links-container {
@@ -701,7 +691,7 @@ body.light-mode #section-nav .hero-btn:hover {
 
     .link-item,
     .media-item {
-        max-width: 100%; /* Full width on very small screens */
+        max-width: 100%; 
         padding: 0.8rem;
     }
 
@@ -710,9 +700,9 @@ body.light-mode #section-nav .hero-btn:hover {
         max-height: 50vh;
     }
 
-    /* Section Navigation */
+    
     #section-nav {
-        top: 60px; /* Adjust for even smaller header */
+        top: 60px; 
         gap: 5px;
         padding: 0.3rem 2%;
     }
@@ -722,5 +712,3 @@ body.light-mode #section-nav .hero-btn:hover {
         font-size: 0.8rem;
     }
 }
-
-
